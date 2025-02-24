@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OAuth Redirect</title>
+    <script>
+        // Lấy Access Token từ URL và chuyển hướng đến ứng dụng của bạn
+        function getAccessToken() {
+            const params = new URLSearchParams(window.location.hash.substring(1));
+            const accessToken = params.get("access_token");
+
+            if (accessToken) {
+                // Chuyển hướng về trang chính hoặc xử lý Access Token
+                window.location.href = "https://tviettuan.github.io/p2g-legal/success.html?access_token=" + accessToken;
+            } else {
+                window.location.href = "https://tviettuan.github.io/p2g-legal/error.html";
+            }
+        }
+        window.onload = getAccessToken;
+    </script>
+</head>
+<body>
+    <p>Đang xử lý xác thực OAuth...</p>
+</body>
+</html>
